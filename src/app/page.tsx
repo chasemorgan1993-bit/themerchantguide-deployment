@@ -9,6 +9,74 @@ import type { ProcessorWithCost } from '../../lib/supabase';
 
 export default function Home() {
   useEffect(() => {
+    // Floating Calendly button
+    const setupFloatingButton = () => {
+      let floatingButton = document.getElementById('floating-calendly');
+
+      if (!floatingButton) {
+        floatingButton = document.createElement('a') as HTMLAnchorElement;
+        floatingButton.id = 'floating-calendly';
+        (floatingButton as HTMLAnchorElement).href = 'https://calendly.com/themerchantguide-info/30min';
+        (floatingButton as HTMLAnchorElement).target = '_blank';
+        floatingButton.innerHTML = '📅';
+        floatingButton.title = 'Schedule Free Consultation';
+
+        Object.assign(floatingButton.style, {
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          width: '60px',
+          height: '60px',
+          background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '24px',
+          boxShadow: '0 4px 20px rgba(34, 197, 94, 0.4)',
+          zIndex: '1000',
+          transition: 'all 0.3s ease',
+          opacity: '0',
+          transform: 'translateY(100px)',
+          textDecoration: 'none'
+        });
+
+        floatingButton.addEventListener('mouseenter', function() {
+          const button = this as HTMLElement;
+          button.style.transform = button.style.transform.includes('translateY(0)') ? 'translateY(0) scale(1.1)' : 'translateY(100px) scale(1.1)';
+          button.style.boxShadow = '0 6px 25px rgba(34, 197, 94, 0.6)';
+        });
+
+        floatingButton.addEventListener('mouseleave', function() {
+          const button = this as HTMLElement;
+          button.style.transform = button.style.transform.includes('translateY(0)') ? 'translateY(0) scale(1)' : 'translateY(100px) scale(1)';
+          button.style.boxShadow = '0 4px 20px rgba(34, 197, 94, 0.4)';
+        });
+
+        document.body.appendChild(floatingButton);
+      }
+
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        const showThreshold = 300; // Show after scrolling 300px
+
+        if (scrollY > showThreshold) {
+          floatingButton.style.opacity = '1';
+          floatingButton.style.transform = 'translateY(0)';
+        } else {
+          floatingButton.style.opacity = '0';
+          floatingButton.style.transform = 'translateY(100px)';
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      // Cleanup function
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    };
+
     // Your Hugo JavaScript logic
     const setupForm = () => {
       const form = document.getElementById('processorForm');
@@ -182,6 +250,11 @@ export default function Home() {
                   <span style="display: inline-flex; align-items: center;">${renderIconSVG('chart', 20, '#1B1B1B')}</span> Compare All Processors Side-by-Side
                 </a>
               </div>
+              <div style="margin-bottom: 15px;">
+                <a href="https://calendly.com/themerchantguide-info/30min" target="_blank" style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 12px 25px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);">
+                  📅 Get Expert Guidance - Free 15min Call
+                </a>
+              </div>
               <p style="color: #4A4A32; font-size: 1rem;">Contact processors directly for custom quotes, or <a href="mailto:info@themerchantguide.com" style="color: #DCA54A; font-weight: 600; text-decoration: none;">email us</a> for personalized guidance.</p>
             </div>
           </div>
@@ -189,7 +262,13 @@ export default function Home() {
       }
     };
 
+    const cleanupFloating = setupFloatingButton();
     setupForm();
+
+    // Cleanup on unmount
+    return () => {
+      if (cleanupFloating) cleanupFloating();
+    };
   }, []);
 
   return (

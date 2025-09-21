@@ -289,10 +289,42 @@ export default function BlogComingSoon() {
               <h3 style={{ color: '#1B1B1B', fontSize: '1.3rem', marginBottom: '10px' }}>
                 Thanks for subscribing!
               </h3>
-              <p style={{ color: '#4A4A32', fontSize: '1rem' }}>
+              <p style={{ color: '#4A4A32', fontSize: '1rem', marginBottom: '20px' }}>
                 You&apos;ll be the first to know when our blog launches. Check your email for
                 confirmation!
               </p>
+              <div style={{ borderTop: '1px solid #DCA54A', paddingTop: '20px' }}>
+                <p style={{ color: '#1B1B1B', fontSize: '1rem', marginBottom: '15px', fontWeight: '600' }}>
+                  Want personalized payment processing advice right now?
+                </p>
+                <a
+                  href="https://calendly.com/themerchantguide-info/30min"
+                  target="_blank"
+                  style={{
+                    background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+                    color: 'white',
+                    padding: '12px 25px',
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    fontWeight: '600',
+                    fontSize: '1rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(34, 197, 94, 0.4)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  📅 Schedule Free Consultation
+                </a>
+              </div>
             </div>
           )}
         </div>

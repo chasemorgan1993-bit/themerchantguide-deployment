@@ -137,7 +137,9 @@ export async function getProcessorRecommendations(formData: {
       // Restaurant/Food & Beverage bonuses
       if (['restaurant', 'cafe', 'bar', 'food_truck', 'catering'].includes(businessType)) {
         if (processor.name === 'Toast') industryBonus += 300; // Toast specializes in restaurants
+        if (processor.name === 'Lightspeed') industryBonus += 280; // Lightspeed excellent for restaurants
         if (processor.name === 'Square') industryBonus += 200; // Square is great for food businesses
+        if (processor.name === 'Clover') industryBonus += 180; // Clover has restaurant features
       }
 
       // Online/Digital bonuses
@@ -156,6 +158,27 @@ export async function getProcessorRecommendations(formData: {
       if (monthlyVolume < 10000) {
         if (processor.no_monthly_fee) industryBonus += 200; // Important for small businesses
         if (processor.name === 'Square' || processor.name === 'PayPal') industryBonus += 150;
+        if (processor.name === 'Clover') industryBonus += 100; // Good starter POS option
+        if (processor.name === 'GoPayBright') industryBonus += 120; // No contracts, good for small business
+      }
+
+      // Retail-specific bonuses
+      if (['retail', 'fashion', 'electronics', 'grocery'].includes(businessType)) {
+        if (processor.name === 'Clover') industryBonus += 200; // Clover excels in retail
+        if (processor.name === 'Lightspeed') industryBonus += 180; // Great retail POS
+        if (processor.name === 'Square') industryBonus += 150; // Popular retail choice
+        if (processor.name === 'GoPayBright') industryBonus += 130; // Flexible, no contracts
+      }
+
+      // Service business bonuses
+      if (['service', 'healthcare', 'fitness', 'beauty', 'education'].includes(businessType)) {
+        if (processor.name === 'GoPayBright') industryBonus += 150; // Good for service businesses wanting flexibility
+        if (processor.name === 'Square') industryBonus += 140; // Popular service choice
+      }
+
+      // POS integration bonuses
+      if (['retail', 'restaurant'].includes(businessType)) {
+        if (processor.name === 'GoPayBright') industryBonus += 80; // Figure POS integration advantage
       }
 
       priorityScore += industryBonus;
