@@ -186,7 +186,8 @@ export default function Home() {
               })()}
             </div>
             <div style="background: linear-gradient(135deg, #DCA54A, #E8B866); color: #1B1B1B; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; text-align: center; box-shadow: 0 4px 15px rgba(220, 165, 74, 0.3);">
-              $${rec.totalCost.toFixed(2)}/month total cost • ${rec.effectiveRate.toFixed(2)}% effective rate
+              <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">$${rec.totalCost.toFixed(2)}/month total cost</div>
+              <div style="font-size: 0.95rem; margin-top: 2px;">${rec.effectiveRate.toFixed(2)}% effective rate</div>
             </div>
           </div>
 
@@ -198,7 +199,7 @@ export default function Home() {
 
           <div style="margin-bottom: 20px;">
             <h4 style="color: #1B1B1B; margin: 0 0 10px 0; font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">${renderIconSVG('features', 18, '#DCA54A')} Key Features:</h4>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px;">
               ${rec.features
                 .map(
                   (feature) => `
@@ -211,7 +212,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+          <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 20px;">
             <div style="background: rgba(34, 197, 94, 0.1); padding: 15px; border-radius: 12px; border-left: 4px solid #22c55e;">
               <div style="font-weight: 600; color: #1B1B1B; margin-bottom: 5px; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">${renderIconSVG('check', 16, '#22c55e')} Strengths</div>
               <div style="color: #1B1B1B; font-size: 0.9rem; line-height: 1.4;">${rec.pros}</div>
@@ -222,15 +223,17 @@ export default function Home() {
             </div>
           </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; padding-top: 20px; border-top: 2px solid #D4C8A8;">
-            <div style="background: #FAF5E5; padding: 15px 20px; border-radius: 12px; border: 2px solid #DCA54A; box-shadow: 0 2px 8px rgba(220, 165, 74, 0.15);">
-              <div style="font-size: 0.85rem; color: #4A4A32; margin-bottom: 2px;">Processing Rate</div>
-              <div style="font-weight: 600; color: #1B1B1B;">${rec.primary_rate}% + $${rec.primary_fixed_fee.toFixed(2)}</div>
-              <div style="font-size: 0.85rem; color: #4A4A32; margin-top: 2px;">Monthly: $${rec.monthly_fee.toFixed(2)}</div>
+          <div style="padding-top: 20px; border-top: 2px solid #D4C8A8;">
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+              <div style="background: #FAF5E5; padding: 15px 20px; border-radius: 12px; border: 2px solid #DCA54A; box-shadow: 0 2px 8px rgba(220, 165, 74, 0.15); text-align: center;">
+                <div style="font-size: 0.85rem; color: #4A4A32; margin-bottom: 2px;">Processing Rate</div>
+                <div style="font-weight: 600; color: #1B1B1B;">${rec.primary_rate}% + $${rec.primary_fixed_fee.toFixed(2)}</div>
+                <div style="font-size: 0.85rem; color: #4A4A32; margin-top: 2px;">Monthly: $${rec.monthly_fee.toFixed(2)}</div>
+              </div>
+              <a href="${rec.website}" target="_blank" style="background: linear-gradient(135deg, #DCA54A, #C4923D); color: #1B1B1B; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(220, 165, 74, 0.4); display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(220, 165, 74, 0.6)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(220, 165, 74, 0.4)';">
+                Learn More <span style="font-size: 1.2rem;">→</span>
+              </a>
             </div>
-            <a href="${rec.website}" target="_blank" style="background: linear-gradient(135deg, #DCA54A, #C4923D); color: #1B1B1B; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(220, 165, 74, 0.4); display: inline-flex; align-items: center; gap: 8px;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(220, 165, 74, 0.6)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(220, 165, 74, 0.4)';">
-              Learn More <span style="font-size: 1.2rem;">→</span>
-            </a>
           </div>
         </div>
         `;
@@ -245,13 +248,11 @@ export default function Home() {
             ${resultsHTML}
             <div style="text-align: center; margin-top: 40px; padding: 25px; background: linear-gradient(135deg, rgba(220, 165, 74, 0.15), rgba(220, 165, 74, 0.08)); border-radius: 20px; border: 2px solid #DCA54A;">
               <p style="color: #1B1B1B; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.1rem;"><strong style="display: flex; align-items: center; gap: 6px;">${renderIconSVG('insight', 20, '#DCA54A')} Pro Tip:</strong> Consider your growth plans when choosing. You can always upgrade later!</p>
-              <div style="margin-bottom: 20px;">
-                <a href="/compare" style="background: linear-gradient(135deg, #DCA54A, #C4923D); color: #1B1B1B; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(220, 165, 74, 0.4);">
-                  <span style="display: inline-flex; align-items: center;">${renderIconSVG('chart', 20, '#1B1B1B')}</span> Compare All Processors Side-by-Side
+              <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+                <a href="/compare" style="background: linear-gradient(135deg, #DCA54A, #C4923D); color: #1B1B1B; padding: 15px 20px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(220, 165, 74, 0.4); text-align: center;">
+                  <span style="display: inline-flex; align-items: center;">${renderIconSVG('chart', 20, '#1B1B1B')}</span> Compare All Processors
                 </a>
-              </div>
-              <div style="margin-bottom: 15px;">
-                <a href="https://calendly.com/themerchantguide-info/30min" target="_blank" style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 12px 25px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);">
+                <a href="https://calendly.com/themerchantguide-info/30min" target="_blank" style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 15px 20px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); text-align: center;">
                   📅 Get Expert Guidance - Free 15min Call
                 </a>
               </div>
