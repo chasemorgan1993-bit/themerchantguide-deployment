@@ -1,26 +1,71 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* TheMerchantGuide Color Variables */
+  --golden-primary: #dca54a;
+  --golden-light: #e8b866;
+  --golden-dark: #c4923d;
+  --olive-primary: #6b6b47;
+  --olive-dark: #5a5a3f;
+  --text-cream: #faf5e5;
+  --text-dark: #1b1b1b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    sans-serif;
+  line-height: 1.6;
+  color: #1b1b1b;
+  background: #6b6b47;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section Styles */
+.hero {
+  background: linear-gradient(135deg, #5a5a3f 0%, #7a7a55 50%, #5a5a3f 100%);
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.hero .highlight {
+  background: linear-gradient(135deg, #dca54a, #e8b866);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    min-height: 50vh;
+  }
 }

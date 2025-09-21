@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Environment files
+.env*
+
+# Logs
+*.log
+
+# Cache directories
+.cache/
+.turbo/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Hugo related (if any hugo files remain)
+public/
+resources/
+assets/
+
+# Documentation that shouldn't be formatted
+README.md
+DEPLOYMENT_GUIDE.md
+MIGRATION_GUIDE.md
+*.md
