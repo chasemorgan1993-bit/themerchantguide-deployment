@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import './hugo-styles.css';
 import { getProcessorRecommendations } from '../../lib/processors';
 import { renderIconSVG } from '../../components/ThemeIcons';
@@ -16,7 +17,8 @@ export default function Home() {
       if (!floatingButton) {
         floatingButton = document.createElement('a') as HTMLAnchorElement;
         floatingButton.id = 'floating-calendly';
-        (floatingButton as HTMLAnchorElement).href = 'https://calendly.com/themerchantguide-info/30min';
+        (floatingButton as HTMLAnchorElement).href =
+          'https://calendly.com/themerchantguide-info/30min';
         (floatingButton as HTMLAnchorElement).target = '_blank';
         floatingButton.innerHTML = '📅';
         floatingButton.title = 'Schedule Free Consultation';
@@ -38,18 +40,22 @@ export default function Home() {
           transition: 'all 0.3s ease',
           opacity: '0',
           transform: 'translateY(100px)',
-          textDecoration: 'none'
+          textDecoration: 'none',
         });
 
-        floatingButton.addEventListener('mouseenter', function() {
+        floatingButton.addEventListener('mouseenter', function () {
           const button = this as HTMLElement;
-          button.style.transform = button.style.transform.includes('translateY(0)') ? 'translateY(0) scale(1.1)' : 'translateY(100px) scale(1.1)';
+          button.style.transform = button.style.transform.includes('translateY(0)')
+            ? 'translateY(0) scale(1.1)'
+            : 'translateY(100px) scale(1.1)';
           button.style.boxShadow = '0 6px 25px rgba(34, 197, 94, 0.6)';
         });
 
-        floatingButton.addEventListener('mouseleave', function() {
+        floatingButton.addEventListener('mouseleave', function () {
           const button = this as HTMLElement;
-          button.style.transform = button.style.transform.includes('translateY(0)') ? 'translateY(0) scale(1)' : 'translateY(100px) scale(1)';
+          button.style.transform = button.style.transform.includes('translateY(0)')
+            ? 'translateY(0) scale(1)'
+            : 'translateY(100px) scale(1)';
           button.style.boxShadow = '0 4px 20px rgba(34, 197, 94, 0.4)';
         });
 
@@ -278,7 +284,13 @@ export default function Home() {
       <nav className="navigation">
         <div className="nav-header">
           <Link href="/" className="nav-logo">
-            <img src="/images/logo_removedbg.png" alt="The Merchant Guide Logo" />
+            <Image
+              src="/images/logo_removedbg.png"
+              alt="The Merchant Guide Logo"
+              width={60}
+              height={60}
+              priority
+            />
             <h2 className="nav-title">
               The <span className="nav-title-highlight">Merchant</span> Guide
             </h2>
@@ -311,10 +323,13 @@ export default function Home() {
             flexWrap: 'wrap',
           }}
         >
-          <img
+          <Image
             src="/images/logo_removedbg.png"
             alt="Guide"
-            style={{ height: '24px', width: 'auto', opacity: 0.9, flexShrink: 0 }}
+            width={24}
+            height={24}
+            style={{ opacity: 0.9, flexShrink: 0 }}
+            priority
           />
           <p
             style={{

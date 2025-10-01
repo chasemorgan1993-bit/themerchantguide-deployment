@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function BlogComingSoon() {
@@ -56,10 +57,12 @@ export default function BlogComingSoon() {
                 textDecoration: 'none',
               }}
             >
-              <img
+              <Image
                 src="/images/logo_removedbg.png"
                 alt="The Merchant Guide Logo"
-                style={{ height: '40px', width: 'auto' }}
+                width={40}
+                height={40}
+                priority
               />
               <h2 style={{ color: '#F4E4BC', margin: 0, fontSize: '1.5rem', fontWeight: '700' }}>
                 The <span style={{ color: '#DCA54A' }}>Merchant</span> Guide
@@ -294,7 +297,14 @@ export default function BlogComingSoon() {
                 confirmation!
               </p>
               <div style={{ borderTop: '1px solid #DCA54A', paddingTop: '20px' }}>
-                <p style={{ color: '#1B1B1B', fontSize: '1rem', marginBottom: '15px', fontWeight: '600' }}>
+                <p
+                  style={{
+                    color: '#1B1B1B',
+                    fontSize: '1rem',
+                    marginBottom: '15px',
+                    fontWeight: '600',
+                  }}
+                >
                   Want personalized payment processing advice right now?
                 </p>
                 <a

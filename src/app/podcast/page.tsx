@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function PodcastComingSoon() {
@@ -56,10 +57,12 @@ export default function PodcastComingSoon() {
                 textDecoration: 'none',
               }}
             >
-              <img
+              <Image
                 src="/images/logo_removedbg.png"
                 alt="The Merchant Guide Logo"
-                style={{ height: '40px', width: 'auto' }}
+                width={40}
+                height={40}
+                priority
               />
               <h2 style={{ color: '#F4E4BC', margin: 0, fontSize: '1.5rem', fontWeight: '700' }}>
                 The <span style={{ color: '#DCA54A' }}>Merchant</span> Guide
@@ -158,8 +161,8 @@ export default function PodcastComingSoon() {
               Coming Soon!
             </h2>
             <p style={{ color: '#4A4A32', fontSize: '1.1rem', lineHeight: '1.5' }}>
-              We&apos;re preparing deep-dive conversations with industry leaders to bring you the insights
-              you need to succeed. Each episode will feature:
+              We&apos;re preparing deep-dive conversations with industry leaders to bring you the
+              insights you need to succeed. Each episode will feature:
             </p>
           </div>
 
@@ -334,7 +337,14 @@ export default function PodcastComingSoon() {
                 You&apos;ll get an email as soon as Episode 1 is live. Thanks for your interest!
               </p>
               <div style={{ borderTop: '1px solid #DCA54A', paddingTop: '20px' }}>
-                <p style={{ color: '#1B1B1B', fontSize: '1rem', marginBottom: '15px', fontWeight: '600' }}>
+                <p
+                  style={{
+                    color: '#1B1B1B',
+                    fontSize: '1rem',
+                    marginBottom: '15px',
+                    fontWeight: '600',
+                  }}
+                >
                   Need payment processing help today?
                 </p>
                 <a
