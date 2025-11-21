@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <div className="pb-24 md:pb-20">{children}</div>
         <StickyFooter />
       </body>
     </html>

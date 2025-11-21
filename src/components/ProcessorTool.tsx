@@ -65,30 +65,30 @@ export default function ProcessorTool() {
     <>
       {/* Form Section */}
       <div
+        className="p-4 md:p-8"
         style={{
           background: '#F4E4BC',
           borderRadius: '20px',
-          padding: '2rem',
           boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
           border: '2px solid #DCA54A',
           marginBottom: '2rem',
         }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }} className="md:mb-8">
           <h2
+            className="text-2xl md:text-3xl"
             style={{
               color: '#1B1B1B',
               marginBottom: '10px',
-              fontSize: '1.8rem',
               fontWeight: 'bold',
             }}
           >
             Tell us about your business
           </h2>
           <p
+            className="text-sm md:text-base"
             style={{
               color: '#4A4A32',
-              fontSize: '1rem',
             }}
           >
             Answer 3 quick questions to get personalized recommendations
@@ -103,12 +103,9 @@ export default function ProcessorTool() {
           <div>
             <label
               htmlFor="business_type"
+              className="block mb-2 font-semibold text-sm md:text-base"
               style={{
-                display: 'block',
-                marginBottom: '0.5rem',
-                fontWeight: 600,
                 color: '#1B1B1B',
-                fontSize: '1rem',
               }}
             >
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -122,12 +119,10 @@ export default function ProcessorTool() {
               id="business_type"
               value={formData.business_type}
               onChange={(e) => handleInputChange('business_type', e.target.value)}
+              className="w-full p-3 md:p-4 text-sm md:text-base"
               style={{
-                width: '100%',
-                padding: '1rem',
                 border: '2px solid #D4C8A8',
                 borderRadius: '12px',
-                fontSize: '1rem',
                 background: 'white',
                 transition: 'all 0.3s ease',
               }}
@@ -358,11 +353,11 @@ export default function ProcessorTool() {
           </div>
 
           {/* Calendly CTA */}
-          <div className="text-center mt-8 p-8 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl border-2 border-green-400 shadow-xl">
-            <h3 className="text-white text-2xl font-bold mb-3">
+          <div className="text-center mt-8 p-6 md:p-8 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl border-2 border-green-400 shadow-xl">
+            <h3 className="text-white text-xl md:text-2xl font-bold mb-3">
               Want a Custom Quote for Your Business?
             </h3>
-            <p className="text-green-50 mb-6 text-lg">
+            <p className="text-green-50 mb-6 text-sm md:text-lg">
               Schedule a free 15-minute consultation with a payment processing expert. Get
               personalized rates and recommendations.
             </p>
@@ -370,11 +365,11 @@ export default function ProcessorTool() {
               href="https://calendly.com/themerchantguide-info/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-white text-green-700 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:bg-green-50 hover:scale-105 hover:shadow-2xl no-underline"
+              className="inline-flex items-center gap-2 md:gap-3 bg-white text-green-700 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 hover:bg-green-50 hover:scale-105 hover:shadow-2xl no-underline"
             >
               📅 Schedule Free Consultation
             </a>
-            <p className="text-green-100 text-sm mt-4">
+            <p className="text-green-100 text-xs md:text-sm mt-4">
               No obligation • Expert guidance • Custom pricing
             </p>
           </div>
