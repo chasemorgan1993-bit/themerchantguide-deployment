@@ -28,10 +28,10 @@ export default function StickyFooter() {
             color: '#DCA54A',
           }}
         >
-          💬 Have Questions?
+          💬 Need Help Choosing?
         </div>
         <div className="text-xs md:text-sm hidden md:block" style={{ color: '#E8E8E8' }}>
-          Not sure which processor is right? Book a free consultation.
+          Talk to a payment processing consultant - free consultation.
         </div>
       </div>
 
@@ -64,7 +64,7 @@ export default function StickyFooter() {
             e.currentTarget.style.boxShadow = '0 4px 15px rgba(34, 197, 94, 0.3)';
           }}
         >
-          📅 Schedule Free Call
+          📅 Free Consultation
         </a>
 
         <a
