@@ -356,6 +356,28 @@ export default function ProcessorTool() {
               for personalized guidance.
             </p>
           </div>
+
+          {/* Calendly CTA */}
+          <div className="text-center mt-8 p-8 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl border-2 border-green-400 shadow-xl">
+            <h3 className="text-white text-2xl font-bold mb-3">
+              Want a Custom Quote for Your Business?
+            </h3>
+            <p className="text-green-50 mb-6 text-lg">
+              Schedule a free 15-minute consultation with a payment processing expert. Get
+              personalized rates and recommendations.
+            </p>
+            <a
+              href="https://calendly.com/themerchantguide-info/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-white text-green-700 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:bg-green-50 hover:scale-105 hover:shadow-2xl no-underline"
+            >
+              📅 Schedule Free Consultation
+            </a>
+            <p className="text-green-100 text-sm mt-4">
+              No obligation • Expert guidance • Custom pricing
+            </p>
+          </div>
         </div>
       )}
     </>

@@ -36,6 +36,7 @@ export interface ProcessorV2 {
   min_monthly_volume?: number;
   max_monthly_volume?: number;
   status: string;
+  featured?: boolean;
   created_at: string;
   updated_at: string;
 }

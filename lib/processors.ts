@@ -52,11 +52,11 @@ export async function getProcessorRecommendations(formData: {
 
     const compatibleTypes = businessTypeMapping[businessType] || [businessType];
 
-    // Fetch from new processors_v2 table
+    // Fetch from new processors_v2 table (include both active and coming_soon)
     const { data: allProcessors, error: allError } = await supabase
       .from('processors_v2')
       .select('*')
-      .eq('status', 'active');
+      .in('status', ['active', 'coming_soon']);
 
     if (allError) {
       console.error('Error fetching processors:', allError);
@@ -134,6 +134,30 @@ export async function getProcessorRecommendations(formData: {
       // Add industry-specific bonuses
       let industryBonus = 0;
 
+      // PayBright Dual Pricing - AUTO-RECOMMEND for Service/Hospitality (ISO Priority)
+      if (
+        [
+          'restaurant',
+          'cafe',
+          'bar',
+          'food_truck',
+          'catering',
+          'service',
+          'hospitality',
+          'healthcare',
+          'fitness',
+          'beauty',
+        ].includes(businessType)
+      ) {
+        if (
+          processor.name === 'PayBrite Dual Pricing' ||
+          processor.name === 'GoPayBright' ||
+          processor.name === 'PayBright'
+        ) {
+          industryBonus += 600; // HIGHEST PRIORITY - ISO recommended for service/hospitality
+        }
+      }
+
       // Restaurant/Food & Beverage bonuses
       if (['restaurant', 'cafe', 'bar', 'food_truck', 'catering'].includes(businessType)) {
         if (processor.name === 'Toast') industryBonus += 300; // Toast specializes in restaurants
@@ -179,6 +203,11 @@ export async function getProcessorRecommendations(formData: {
       // POS integration bonuses
       if (['retail', 'restaurant'].includes(businessType)) {
         if (processor.name === 'GoPayBright') industryBonus += 80; // Figure POS integration advantage
+      }
+
+      // Featured processor bonus - prioritize our main 5 processors
+      if (processor.featured) {
+        industryBonus += 400; // Significant boost for featured processors
       }
 
       priorityScore += industryBonus;

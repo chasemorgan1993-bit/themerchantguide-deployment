@@ -18,16 +18,33 @@ interface ProcessorCardProps {
 
 export function ProcessorCard({ processor, index, formData }: ProcessorCardProps) {
   const getBadge = (index: number) => {
+    // Coming Soon badge takes priority
+    if (processor.status === 'coming_soon') {
+      return (
+        <div className="absolute -top-3 right-4 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+          Coming Soon
+        </div>
+      );
+    }
+
+    // Then Best Match
     if (index === 0) {
       return (
         <div className="absolute -top-3 right-4 bg-golden-gradient text-dark-500 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-          Best Match
+          Best Match {processor.featured && '⭐'}
         </div>
       );
     } else if (index === 1) {
       return (
         <div className="absolute -top-3 right-4 bg-green-400 text-dark-500 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-          Great Alternative
+          Great Alternative {processor.featured && '⭐'}
+        </div>
+      );
+    } else if (processor.featured) {
+      // Show Featured badge for other featured processors
+      return (
+        <div className="absolute -top-3 right-4 bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+          ⭐ Featured
         </div>
       );
     }
@@ -102,8 +119,8 @@ export function ProcessorCard({ processor, index, formData }: ProcessorCardProps
       </div>
 
       {/* Pros and Cons */}
-      <div className="grid md:grid-cols-2 gap-4 mb-6">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
           <div
             className="text-dark-500 font-semibold mb-2"
             style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
@@ -113,9 +130,9 @@ export function ProcessorCard({ processor, index, formData }: ProcessorCardProps
             ></span>
             Pros:
           </div>
-          <p className="text-dark-600 text-sm">{processor.pros}</p>
+          <p className="text-dark-600 text-sm leading-relaxed break-words">{processor.pros}</p>
         </div>
-        <div>
+        <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
           <div
             className="text-dark-500 font-semibold mb-2"
             style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
@@ -125,7 +142,7 @@ export function ProcessorCard({ processor, index, formData }: ProcessorCardProps
             ></span>
             Cons:
           </div>
-          <p className="text-dark-600 text-sm">{processor.cons}</p>
+          <p className="text-dark-600 text-sm leading-relaxed break-words">{processor.cons}</p>
         </div>
       </div>
 
@@ -141,14 +158,23 @@ export function ProcessorCard({ processor, index, formData }: ProcessorCardProps
           </div>
         </div>
 
-        <a
-          href={processor.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-golden-gradient text-dark-500 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg no-underline"
-        >
-          Learn More →
-        </a>
+        {processor.status === 'coming_soon' ? (
+          <button
+            disabled
+            className="bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed opacity-70"
+          >
+            Coming Soon
+          </button>
+        ) : (
+          <a
+            href={processor.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-golden-gradient text-dark-500 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg no-underline"
+          >
+            Learn More →
+          </a>
+        )}
       </div>
     </div>
   );
