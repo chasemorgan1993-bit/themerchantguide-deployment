@@ -253,16 +253,13 @@ export default function Home() {
             <h2 style="margin-bottom: 30px; color: #1B1B1B; text-align: center; display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 2.2rem; font-weight: 700;"><img src="/images/logo_removedbg.png" alt="Guide" style="height: 48px; width: auto; opacity: 0.9;" /> Your Personalized Recommendations</h2>
             ${resultsHTML}
             <div style="text-align: center; margin-top: 40px; padding: 25px; background: linear-gradient(135deg, rgba(220, 165, 74, 0.15), rgba(220, 165, 74, 0.08)); border-radius: 20px; border: 2px solid #DCA54A;">
-              <p style="color: #1B1B1B; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.1rem;"><strong style="display: flex; align-items: center; gap: 6px;">${renderIconSVG('insight', 20, '#DCA54A')} Pro Tip:</strong> Consider your growth plans when choosing. You can always upgrade later!</p>
+              <p style="color: #1B1B1B; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.1rem;"><strong style="display: flex; align-items: center; gap: 6px;">${renderIconSVG('insight', 20, '#DCA54A')} Want personalized guidance?</strong></p>
               <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
-                <a href="/compare" style="background: linear-gradient(135deg, #DCA54A, #C4923D); color: #1B1B1B; padding: 15px 20px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(220, 165, 74, 0.4); text-align: center;">
-                  <span style="display: inline-flex; align-items: center;">${renderIconSVG('chart', 20, '#1B1B1B')}</span> Compare All Processors
-                </a>
-                <a href="https://calendly.com/themerchantguide-info/30min" target="_blank" style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 15px 20px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); text-align: center;">
-                  📅 Get Expert Guidance - Free 15min Call
+                <a href="https://calendly.com/themerchantguide-info/30min" target="_blank" style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 15px 20px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4); text-align: center;">
+                  📅 Schedule Free Consultation
                 </a>
               </div>
-              <p style="color: #4A4A32; font-size: 1rem;">Contact processors directly for custom quotes, or <a href="mailto:info@themerchantguide.com" style="color: #DCA54A; font-weight: 600; text-decoration: none;">email us</a> for personalized guidance.</p>
+              <p style="color: #4A4A32; font-size: 1rem;">Talk to a payment processing consultant - get unbiased advice and custom pricing</p>
             </div>
           </div>
         `;
